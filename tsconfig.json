@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true
+    },
+    "files": ["025_interface_classes.ts"],
+    "exclude": [
+        "node_modules"
+    ]
+}
