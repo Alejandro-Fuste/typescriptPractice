@@ -3,7 +3,7 @@
         "module": "commonjs",
         "sourceMap": true
     },
-    "files": ["025_interface_classes.ts"],
+    "files": ["027_this.ts"],
     "exclude": [
         "node_modules"
     ]
