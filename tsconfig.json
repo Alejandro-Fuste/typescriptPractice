@@ -6,7 +6,7 @@
 		"emitDecoratorMetadata" : true,
         "sourceMap": true
     },
-    "files": ["030_decorator_introduction.ts"],
+    "files": ["033_decorator_example_angular.ts"],
     "exclude": [
         "node_modules"
     ]
