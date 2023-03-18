@@ -1,29 +1,56 @@
 import * as React from "react";
 
 interface IInvoiceListProps {
-  invoiceData: {
-    customerName: string;
-    invoices: {id: number; name: string, total: string}[]
-  }
-  
+  invoiceData: InvoiceDataType;
   logo?: string;
+}
+
+type InvoiceDataType = {
+  customerName: string;
+  invoices: InvoiceType[];
+}
+
+type paymentStatusType = "paid" | "outstanding" | "pending";
+
+type InvoiceType = {
+  id: number; 
+  name: string;
+  total: string;
+  paymentStatus: paymentStatusType;
 }
 
 const InvoiceList = (props: IInvoiceListProps) => {
   const {customerName, invoices} = props.invoiceData;
+
+  const itemStyleContainer = {
+    display: "flex", 
+    justifyContent: "space-between",
+  }
   
   return <div>
-    <h1>{props.invoiceData.customerName}</h1>
+    <h1>{customerName}</h1>
+    <hr />
+
+    <div>
+      {invoices.map((invoice) => (
+        <div key={invoice.id} style={itemStyleContainer}>
+         <div>{invoice.name}</div> 
+
+         <div>{invoice.total} - {invoice.paymentStatus}</div>
+          
+        </div>
+      ))}
+    </div>
   </div>
 }
 
 const App = () => {
-  const data = {
+  const data: InvoiceDataType = {
     customerName: "Google",
     invoices: [
-      {id: 123, name: "Dev work", total: "20.00"},
-      {id: 456, name: "More dev work", total: "50.00"},
-      {id: 456, name: "Something different", total: "100.00"},
+      {id: 123, name: "Dev work", total: "20.00", paymentStatus: "outstanding"},
+      {id: 456, name: "More dev work", total: "50.00", paymentStatus: "pending"},
+      {id: 789, name: "Something different", total: "100.00", paymentStatus: "paid"},
     ]
   }
 
